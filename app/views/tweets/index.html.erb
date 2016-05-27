@@ -1,0 +1,11 @@
+<div>
+  <%  @tweets.each do |tweet| %>
+    <ul>
+      <li>Usuário: <%= tweet['user']['name'] %></li>
+      <li>Número de seguidores: <%= tweet['user']['followers_count'] %> </li>
+      <li>Potado em: <%= tweet['created_at'] %></li>
+      <li>Mensagem: <%= tweet['text'] %></li>
+      <hr>
+    </ul>
+  <% end %>
+</div>
