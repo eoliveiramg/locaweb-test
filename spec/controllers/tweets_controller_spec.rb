@@ -10,7 +10,8 @@ describe TweetsController do
         'Host' => 'tweeps.locaweb.com.br',
         'User-Agent' => 'Ruby',
         'Username' => 'eoliveiramg@gmail.com'
-      }).to_return(status: 200, body: "")
+      }).to_return(status: 200, body: "locaweb")
+    
   end
 
   context "on index" do
@@ -19,6 +20,14 @@ describe TweetsController do
       get :index
 
       expect(response).to be_success
+    end
+
+    it "returns expected body" do
+      controller.stub(:parsed_tweets).and_return('locaweb')
+      TweetBusinessRules.any_instance.stub(:filter).and_return('locaweb')
+      get :index
+
+      expect(response.body).to eq('')
     end
   end
 end
