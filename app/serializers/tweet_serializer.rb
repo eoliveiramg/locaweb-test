@@ -16,7 +16,8 @@ class TweetSerializer
       {
         id: tweet['id_str'],  
         favorited: tweet['favorited'],
-        retweet_count: tweet['retweet_count'], 
+        retweet_count: tweet['retweet_count'],
+        in_reply_to: tweet['in_reply_to_status_id_str'],
         date: tweet['created_at'],
         message: tweet['text'],
         user: {

@@ -80,6 +80,7 @@ describe TweetSerializer do
           id: "174899",
           favorited: true,
           retweet_count: 0,
+          in_reply_to: "",
           date: "Mon Sep 24 03:35:21 +0000 2012",
           message: "If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
           user: {
