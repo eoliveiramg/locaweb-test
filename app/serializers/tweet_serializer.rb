@@ -20,10 +20,13 @@ class TweetSerializer
         in_reply_to: tweet['in_reply_to_status_id_str'],
         date: tweet['created_at'],
         message: tweet['text'],
+        user_mentions: tweet['entities']['user_mentions'],
         user: {
           id: tweet['user']['id_str'],
-          name: tweet['user']['name'], 
-          followers: tweet['user']['followers_count']
+          name: tweet['user']['name'],
+          screen_name: tweet['user']['screen_name'],
+          followers: tweet['user']['followers_count'],
+          favourites_count: tweet['user']['favourites_count']
         }
       }
     end
