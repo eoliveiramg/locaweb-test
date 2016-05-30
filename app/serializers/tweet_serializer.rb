@@ -20,7 +20,7 @@ class TweetSerializer
         in_reply_to: tweet['in_reply_to_status_id_str'],
         date: tweet['created_at'],
         message: tweet['text'],
-        user_mentions: tweet['entities']['user_mentions'],
+        user_mentions: user_mentions(tweet['entities']),
         user: {
           id: tweet['user']['id_str'],
           name: tweet['user']['name'],
@@ -30,5 +30,11 @@ class TweetSerializer
         }
       }
     end
+  end
+
+  def user_mentions(entities)
+    return [] if entities['user_mentions'].empty?
+
+    entities['user_mentions'].first['id']
   end
 end
