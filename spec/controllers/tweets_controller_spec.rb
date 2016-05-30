@@ -25,6 +25,7 @@ describe TweetsController do
     it "returns expected body" do
       controller.stub(:parsed_tweets).and_return('locaweb')
       TweetBusinessRules.any_instance.stub(:filter).and_return('locaweb')
+      TweetBusinessRules.any_instance.stub(:sort).and_return('locaweb')
       get :index
 
       expect(response.body).to eq('')

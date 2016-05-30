@@ -13,8 +13,10 @@ class TweetsController < ApplicationController
   end
 
   def apply_business_rules(tweets, params = {})
-    TweetBusinessRules.new(tweets)
+    filtered_tweets = TweetBusinessRules.new(tweets)
       .filter(params[:search_term], params[:replay_exclude])
+
+    TweetBusinessRules.new(filtered_tweets).sort
   end
 
   def parsed_tweets(response)
