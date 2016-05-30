@@ -16,16 +16,17 @@ describe TweetsController do
 
   context "on index" do
     it "render the index" do
-      TweetsController.any_instance.stub(:index).and_return(true)
+      allow_any_instance_of(TweetsController).to receive(:index).and_return(true)
       get :index
 
       expect(response).to be_success
     end
 
     it "returns expected body" do
-      controller.stub(:parsed_tweets).and_return('locaweb')
-      TweetBusinessRules.any_instance.stub(:filter).and_return('locaweb')
-      TweetBusinessRules.any_instance.stub(:sort).and_return('locaweb')
+      allow_any_instance_of(TweetsController).to receive(:parsed_tweets).and_return('locaweb')
+      allow_any_instance_of(TweetBusinessRules).to receive(:filter).and_return('locaweb')
+      allow_any_instance_of(TweetBusinessRules).to receive(:sort).and_return('locaweb')
+      
       get :index
 
       expect(response.body).to eq('')
