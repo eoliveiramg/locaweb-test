@@ -1,13 +1,14 @@
 <div>
-  <%  @tweets.each do |tweet| %>
-    <ul>
-      <li>Usuário: <%= link_to(tweet['user']['name'], "https://twitter.com/#{tweet['user']['screen_name'].gsub('_', '')}") %></li>
-      <li>Número de seguidores: <%= tweet['user']['followers'] %> </li>
-      <li>Número de retweets: <%= tweet['retweet_count'] %> </li>
-      <li>Potado em: <%= link_to(tweet['date'].to_datetime.strftime("%d-%m-%Y %H:%M:%S"), "https://twitter.com/#{tweet['user']['screen_name'].gsub('_', '')}/status/#{tweet['id']}") %></li>
-      <li>Mensagem: <%= tweet['message'] %></li>
-      <li>Número de favoritos: <%= tweet['user']['favourites_count'] %></li>
-      <hr>
-    </ul>
+  <% @tweets.each do |tweet| %>
+    <p>Usuário: <%= user_name(tweet) %></p>
+    <p>Número de seguidores: <%= followers(tweet) %> </p>
+      
+    <p>Mensagem: <%= message(tweet) %></p>
+    <p>Potado em: <%= posted_date(tweet) %></p>
+      
+    <p>Número de retweets: <%= retweet_count(tweet) %> </p>
+    <p>Número de favoritos: <%= favourites_count(tweet) %></p>
+    
+    <hr>
   <% end %>
 </div>
