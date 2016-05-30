@@ -26,7 +26,13 @@ describe TweetBusinessRules do
   end
 
   context '.sort' do
-    it 'returns sort tweets'
+    subject(:tweets) do
+      TweetBusinessRules.new(entrie_tweets[:tweets]).sort
+    end
+
+    it 'returns sort tweets' do
+      expect(tweets).to eq(expect_result_3)
+    end
   end
 end
 
@@ -40,7 +46,7 @@ def entrie_tweets
         in_reply_to: "127392",
         date: "Mon Sep 24 03:35:21 +0000 2012",
         message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-        user_mentions: [],
+        user_mentions: 30,
         user: {
           id: "254438",
           name: "Keefe Mohammed O",
@@ -56,13 +62,13 @@ def entrie_tweets
         in_reply_to: "8360832",
         date: "Mon Sep 24 03:35:21 +0000 2012",
         message: "If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-        user_mentions: [],
+        user_mentions: 42,
         user: {
           id: "254438",
           name: "Keefe Mohammed O",
           screen_name: "keefe_mohammed_o",
           followers: 200,
-          favourites_count: 76
+          favourites_count: 70
         }
       },
       {
@@ -72,13 +78,13 @@ def entrie_tweets
         in_reply_to: "",
         date: "Mon Sep 24 03:35:21 +0000 2012",
         message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-        user_mentions: [],
+        user_mentions: 41,
         user: {
           id: "951437",
           name: "Keefe Mohammed O",
           screen_name: "keefe_mohammed_o",
           followers: 300,
-          favourites_count: 76
+          favourites_count: 90
         }
       },
       {
@@ -88,13 +94,13 @@ def entrie_tweets
         in_reply_to: "",
         date: "Mon Sep 24 03:35:21 +0000 2012",
         message: "If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-        user_mentions: [],
+        user_mentions: 42,
         user: {
           id: "951437",
           name: "Keefe Mohammed O",
           screen_name: "keefe_mohammed_o",
           followers: 400,
-          favourites_count: 76
+          favourites_count: 50
         }
       }
     ]
@@ -110,7 +116,7 @@ def expect_result_1
       in_reply_to: "127392",
       date: "Mon Sep 24 03:35:21 +0000 2012",
       message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-      user_mentions: [],
+      user_mentions: 30,
       user: {
         id: "254438",
         name: "Keefe Mohammed O",
@@ -126,13 +132,13 @@ def expect_result_1
       in_reply_to: "",
       date: "Mon Sep 24 03:35:21 +0000 2012",
       message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-      user_mentions: [],
+      user_mentions: 41,
       user: {
         id: "951437",
         name: "Keefe Mohammed O",
         screen_name: "keefe_mohammed_o",
         followers: 300,
-        favourites_count: 76
+        favourites_count: 90
       }
     }
   ].as_json
@@ -147,12 +153,81 @@ def expect_result_2
       in_reply_to: "",
       date: "Mon Sep 24 03:35:21 +0000 2012",
       message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
-      user_mentions: [],
+      user_mentions: 41,
       user: {
         id: "951437",
         name: "Keefe Mohammed O",
         screen_name: "keefe_mohammed_o",
         followers: 300,
+        favourites_count: 90
+      }
+    }
+  ].as_json
+end
+
+def expect_result_3
+  [
+    {
+      id: "573791",
+      favorited: true,
+      retweet_count: 3,
+      in_reply_to: "8360832",
+      date: "Mon Sep 24 03:35:21 +0000 2012",
+      message: "If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
+      user_mentions: 42,
+      user: {
+        id: "254438",
+        name: "Keefe Mohammed O",
+        screen_name: "keefe_mohammed_o",
+        followers: 200,
+        favourites_count: 70
+      }
+    },
+    {
+      id: "134712",
+      favorited: true,
+      retweet_count: 4,
+      in_reply_to: "",
+      date: "Mon Sep 24 03:35:21 +0000 2012",
+      message: "If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
+      user_mentions: 42,
+      user: {
+        id: "951437",
+        name: "Keefe Mohammed O",
+        screen_name: "keefe_mohammed_o",
+        followers: 400,
+        favourites_count: 50
+      }
+    },
+    {
+      id: "134792",
+      favorited: true,
+      retweet_count: 1,
+      in_reply_to: "",
+      date: "Mon Sep 24 03:35:21 +0000 2012",
+      message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
+      user_mentions: 41,
+      user: {
+        id: "951437",
+        name: "Keefe Mohammed O",
+        screen_name: "keefe_mohammed_o",
+        followers: 300,
+        favourites_count: 90
+      }
+    },
+    {
+      id: "174899",
+      favorited: true,
+      retweet_count: 2,
+      in_reply_to: "127392",
+      date: "Mon Sep 24 03:35:21 +0000 2012",
+      message: "@locaweb If we hack the panel, we can get to the SQL sensor through the cross-platform SSL interface!",
+      user_mentions: 30,
+      user: {
+        id: "254438",
+        name: "Keefe Mohammed O",
+        screen_name: "keefe_mohammed_o",
+        followers: 100,
         favourites_count: 76
       }
     }
